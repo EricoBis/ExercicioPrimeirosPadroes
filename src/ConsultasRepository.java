@@ -8,13 +8,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Consultas {
+public class ConsultasRepository implements IRepository{
     private List<RegistroDoTempo> registros;
     private String nArq;
 
-    public Consultas(){
+    public ConsultasRepository(){
         registros = new LinkedList<>();
         this.nArq = "poa_temps.txt";
+        carregaDados();
     }
 
     public void carregaDados(){
@@ -54,23 +55,10 @@ public class Consultas {
          }catch (IOException x){
              System.err.format("Erro de E/S: %s%n", x);
          }
-    }    
-
-    public List<String> datasEmQueChouveuMaisDe(double milimetros){
-        return registros
-            .stream()
-            .filter(r->r.getPrecipitacao() > milimetros)
-            .map(r->r.getDia()+"/"+r.getMes()+"/"+r.getAno())
-            .toList();
+    }   
+    
+    public List<RegistroDoTempo> getRegistros(){
+        return registros;
     }
 
-    public String diaQueMaisChoveuNoAno(int ano){
-        RegistroDoTempo registro = registros
-        .stream()
-        .filter(reg->reg.getAno() == ano)
-        .max(Comparator.comparing(RegistroDoTempo::getPrecipitacao))
-        .orElseThrow(IllegalArgumentException::new);
-        String resp = registro.getDia()+"/"+registro.getMes()+"/"+registro.getAno()+", "+registro.getPrecipitacao();
-        return resp;
-    }
 }
