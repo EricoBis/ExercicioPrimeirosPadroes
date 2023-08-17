@@ -1,13 +1,14 @@
 public class App {
     public static void main(String[] args) {
-        IRepository<RegistroDoTempo> consultasRepository = new RegistrosRepository("poa_temps.txt");
-        RegistrosManager consultas = new RegistrosManager(consultasRepository);
+        IRepository<RegistroDoTempo> repository = new RegistrosRepository("poa_temps.txt");
+        RegistrosManager registros = new RegistrosManager(repository);
 
+        //output
         System.out.println("Dia em que mais choveu no ano de 1980: ");
-        System.out.println(consultas.diaQueMaisChoveuNoAno(1980));
+        System.out.println(registros.diaQueMaisChoveuNoAno(1980));
 
         System.out.println("Datas em que choveu mais de 90 milimetros");
-        consultas.datasEmQueChouveuMaisDe(90)
+        registros.datasEmQueChouveuMaisDe(90)
              .forEach(System.out::println);
     }
 }

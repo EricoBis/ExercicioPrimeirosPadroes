@@ -2,7 +2,6 @@
 
 import java.util.*;
 
-// --> Implementa "IRepository<RegistroDoTempo>" pois trabalha com objetos RegistroDoTempo
 public class RegistrosManager{
     private IRepository<RegistroDoTempo> repository;
 
@@ -29,8 +28,5 @@ public class RegistrosManager{
                 .orElseThrow(IllegalArgumentException::new);
         String resp = registro.getDia() + "/" + registro.getMes() + "/" + registro.getAno() + ", " + registro.getPrecipitacao();
         return resp;
-    }
-    public Collection<RegistroDoTempo> getRegistros() {
-        return repository.getRegistros();
     }
 }
