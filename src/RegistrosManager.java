@@ -3,7 +3,7 @@
 import java.util.*;
 
 // --> Implementa "IRepository<RegistroDoTempo>" pois trabalha com objetos RegistroDoTempo
-public class RegistrosManager implements IRepository<RegistroDoTempo>{
+public class RegistrosManager{
     private IRepository<RegistroDoTempo> repository;
 
     // --> Aceitar um objeto que implemente a interface
@@ -30,7 +30,6 @@ public class RegistrosManager implements IRepository<RegistroDoTempo>{
         String resp = registro.getDia() + "/" + registro.getMes() + "/" + registro.getAno() + ", " + registro.getPrecipitacao();
         return resp;
     }
-    @Override
     public Collection<RegistroDoTempo> getRegistros() {
         return repository.getRegistros();
     }

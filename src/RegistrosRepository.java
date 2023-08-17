@@ -7,13 +7,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+// -->
 public class RegistrosRepository implements IRepository<RegistroDoTempo> {
     private List<RegistroDoTempo> registros;
     private String nomeArq;
 
-    public RegistrosRepository(){
+    public RegistrosRepository(String nomeArq){
         registros = new LinkedList<>();
-        this.nomeArq = "poa_temps.txt";
+        this.nomeArq = nomeArq;
         carregaDados(); // Carrega os dados no construtor
     }
 
