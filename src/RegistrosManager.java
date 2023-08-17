@@ -1,11 +1,13 @@
+//[Antiga classe Consultas.java]
+
 import java.util.*;
 
 // --> Implementa "IRepository<RegistroDoTempo>" pois trabalha com objetos RegistroDoTempo
-public class ConsultasRepository implements IRepository<RegistroDoTempo>{
+public class RegistrosManager implements IRepository<RegistroDoTempo>{
     private IRepository<RegistroDoTempo> repository;
 
     // --> Aceitar um objeto que implemente a interface
-    public ConsultasRepository(IRepository<RegistroDoTempo> repository){
+    public RegistrosManager(IRepository<RegistroDoTempo> repository){
         this.repository = repository;
     }
 

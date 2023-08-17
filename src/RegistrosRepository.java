@@ -7,20 +7,20 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ArquivoRepository implements IRepository<RegistroDoTempo> {
+public class RegistrosRepository implements IRepository<RegistroDoTempo> {
     private List<RegistroDoTempo> registros;
-    private String nArq;
+    private String nomeArq;
 
-    public ArquivoRepository(){
+    public RegistrosRepository(){
         registros = new LinkedList<>();
-        this.nArq = "poa_temps.txt";
+        this.nomeArq = "poa_temps.txt";
         carregaDados(); // Carrega os dados no construtor
     }
 
     public void carregaDados(){
         String currDir = Paths.get("").toAbsolutePath().toString();
         // Monta o nome do arquivo
-        String nomeCompleto = currDir+"/"+nArq;
+        String nomeCompleto = currDir+"/"+nomeArq;
         System.out.println(nomeCompleto);
         // Cria acesso ao "diretorio" da mídia (disco)
         Path path = Paths.get(nomeCompleto);
