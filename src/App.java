@@ -3,6 +3,8 @@ public class App {
         IRepository<RegistroDoTempo> repository = new RegistrosRepository("poa_temps.txt");
         RegistrosManager registros = new RegistrosManager(repository);
 
+        //TODO - criar predicate para alteração
+
         //output
         System.out.println("Dia em que mais choveu no ano de 1980: ");
         System.out.println(registros.diaQueMaisChoveuNoAno(1980));
