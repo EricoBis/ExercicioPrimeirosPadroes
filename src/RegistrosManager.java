@@ -4,9 +4,8 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-
-
 public class RegistrosManager {
+
     private Predicate<RegistroDoTempo> predicate;
     private IRepository<RegistroDoTempo> repository;
 
@@ -38,16 +37,15 @@ public class RegistrosManager {
         return resp;
     }
 
-    
     public void alteraConsultaPadrao(Predicate<RegistroDoTempo> consulta) {
         this.predicate = consulta;
     }
 
-    
     public List<RegistroData> diasEmQue() {
         List<RegistroData> datas = new LinkedList<>();
         datas = repository.getRegistros().stream()
-                .filter(predicate).map(registro -> new RegistroData(registro.getDia(), registro.getMes(), registro.getAno()))
+                .filter(predicate)
+                .map(registro -> new RegistroData(registro.getDia(), registro.getMes(), registro.getAno()))
                 .collect(Collectors.toList());
         return datas;
     }

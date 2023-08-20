@@ -1,7 +1,6 @@
 public class RegistroData {
     private int dia, mes, ano;
 
-    // TODO
     public RegistroData(int dia, int mes, int ano) {
         this.dia = dia;
         this.mes = mes;
@@ -31,11 +30,10 @@ public class RegistroData {
     public void setAno(int ano) {
         this.ano = ano;
     }
-    
+
     @Override
-    public String toString(){
-        return "dia "+dia+" mes "+mes+" ano "+ano +"\n";
+    public String toString() {
+        return "RegistroData [dia=" + dia + ", mes=" + mes + ", ano=" + ano + "]\n";
     }
 
-    
 }

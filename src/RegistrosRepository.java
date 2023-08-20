@@ -7,32 +7,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-// -->
 public class RegistrosRepository implements IRepository<RegistroDoTempo> {
     private List<RegistroDoTempo> registros;
     private String nomeArq;
 
-    public RegistrosRepository(String nomeArq){
+    public RegistrosRepository(String nomeArq) {
         registros = new LinkedList<>();
         this.nomeArq = nomeArq;
         carregaDados(); // Carrega os dados no construtor
     }
 
-    public void carregaDados(){
+    public void carregaDados() {
         String currDir = Paths.get("").toAbsolutePath().toString();
         // Monta o nome do arquivo
-        String nomeCompleto = currDir+"/"+nomeArq;
+        String nomeCompleto = currDir + "/" + nomeArq;
         System.out.println(nomeCompleto);
         // Cria acesso ao "diretorio" da mídia (disco)
         Path path = Paths.get(nomeCompleto);
 
         String linha = "";
         // Usa a classe scanner para fazer a leitura do arquivo
-        try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))){
+        try (Scanner sc = new Scanner(Files.newBufferedReader(path, StandardCharsets.UTF_8))) {
             // Pula o cabecalho
             sc.nextLine();
             // Le os dados
-            while(sc.hasNext()){
+            while (sc.hasNext()) {
                 linha = sc.nextLine();
                 String dados[] = linha.split(" ");
                 // Trata a data
@@ -49,15 +48,16 @@ public class RegistrosRepository implements IRepository<RegistroDoTempo> {
                 double umidadeRelativaDoAr = Double.parseDouble(dados[6]);
                 double velocidadeDoVento = Double.parseDouble(dados[7]);
                 // Cria um registro e insere na lista
-                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacao, tempMaxima, tempMinima, horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
+                RegistroDoTempo reg = new RegistroDoTempo(dia, mes, ano, precipitacao, tempMaxima, tempMinima,
+                        horasInsolacao, temperaturaMedia, umidadeRelativaDoAr, velocidadeDoVento);
                 registros.add(reg);
             }
-        }catch (IOException x){
+        } catch (IOException x) {
             System.err.format("Erro de E/S: %s%n", x);
         }
     }
 
-    public List<RegistroDoTempo> getRegistros(){
+    public List<RegistroDoTempo> getRegistros() {
         return registros;
     }
 }
