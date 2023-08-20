@@ -18,14 +18,13 @@ public class App {
         registros.datasEmQueChouveuMaisDe(90)
                 .forEach(System.out::println);
 
-        //Dias em que a temperatura máxima foi maior que 35 graus
+        System.out.println("Dias em que a temperatura maxima foi maior que 35 graus");
         List<RegistroData> datas = registros.diasEmQue();
         System.out.println(datas);
 
-        //Dias em que a temperatura mínima foi menor que 5 graus
+         System.out.println("Dias em que a temperatura minima foi menor que 5 graus");
         registros.alteraConsultaPadrao(menorQue);
         List<RegistroData> datas2 = registros.diasEmQue();
         System.out.println(datas2);
-
     }
 }
